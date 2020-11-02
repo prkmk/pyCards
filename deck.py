@@ -26,16 +26,21 @@ class Deck:
     random.shuffle(self.cards)
   
   def takeCard(self):
-    return self.cards.pop()
+    if len(self.cards) > 0:
+      return self.cards.pop()
+    else:
+      return None
   
   def takeCards(self, count = 1):
+    count = len(self.cards) if count > len(self.cards) else count
     cards = []
     for i in range(count):
       cards.append(self.cards.pop())
     return cards
   
   def addCard(self, card):
-    self.cards.append(card)
+    if card != None:
+      self.cards.append(card)
     return len(self.cards)
   
   def addCards(self, cards):

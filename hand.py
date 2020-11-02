@@ -38,8 +38,9 @@ class Hand:
       print(end=end)
   
   def addCard(self, card):
-    self.cards.append(card)
-    sortCards(self.cards)
+    if card != None:
+      self.cards.append(card)
+      sortCards(self.cards)
     return len(self.cards)
   
   def addCards(self, cards):
@@ -49,7 +50,10 @@ class Hand:
     return len(self.cards)
 
   def takeCard(self, index):
-    return self.cards.pop(index)
+    if index < len(self.cards): 
+      return self.cards.pop(index)
+    else:
+      return None
 
   def revealCard(self, index):
     self.cards[index].reveal()
