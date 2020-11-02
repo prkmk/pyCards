@@ -1,2 +1,4 @@
 # pyCards
-Simple deck of cards made with python
+A simple deck of cards made with python
+
+The example program is in Finnish
