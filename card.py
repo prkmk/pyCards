@@ -1,5 +1,6 @@
 import enum
 from colorama import init, Fore, Back, Style
+from cardCharacters import *
 
 class Suits(enum.Enum):
   HEART = "♥"
@@ -12,24 +13,27 @@ class Card:
     self.value = 14 if value == 1 else value
     self.suit = suit
     self.revealed = revealed
+    if suit == Suits.HEART:
+      self.character = HEARTS[value - 2]
+    if suit == Suits.SPADE:
+      self.character = SPADES[value - 2]
+    if suit == Suits.DIAMOND:
+      self.character = DIAMONDS[value - 2]
+    if suit == Suits.CLUB:
+      self.character = CLUBS[value - 2]
   
   def print(self, end = "\n"):
     try:
       if self.revealed:
         f = Fore.RED if (self.suit == Suits.HEART or self.suit == Suits.DIAMOND) else Fore.BLACK
-        b = Back.WHITE
-        v = "J" if self.value == 11 else "Q" if self.value == 12 else "K" if self.value == 13 else "A" if self.value == 14 else self.value
-        s = self.suit.value + "{:>2}".format(v)
-        print(f + b + s + Style.RESET_ALL, end=end)
+        print(f + Back.WHITE + self.character + " " + Style.RESET_ALL, end=end)
       else:
-        print(Back.GREEN + "   " + Style.RESET_ALL, end=end)
+        print(Fore.BLACK + Back.WHITE + BACK + " " + Style.RESET_ALL, end=end)
     except:
       if self.revealed:
-        v = "J" if self.value == 11 else "Q" if self.value == 12 else "K" if self.value == 13 else "A" if self.value == 14 else self.value
-        print(self.suit.value + "{:>2}".format(v), end=end)
+        print(self.character + " ", end=end)
       else:
-        print("███", end=end)
-        
+        print(BACK + " ", end=end)
     
   def reveal(self):
     self.revealed = True
