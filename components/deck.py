@@ -26,7 +26,7 @@ class Deck:
         print(Back.LIGHTBLACK_EX + "   " + Style.RESET_ALL, end=end)
       except:
         print("███", end=end)
-    if len(self.cards) > index and index >= 0:
+    elif len(self.cards) > index and index >= 0:
       self.cards[index].print(end=end)
     else:
       print("   ", end=end)
@@ -46,6 +46,9 @@ class Deck:
     for i in range(count):
       cards.append(self.cards.pop())
     return cards
+  
+  def takeAllCards(self):
+    return self.takeCards(len(self.cards))
   
   def addCard(self, card):
     if card != None:
