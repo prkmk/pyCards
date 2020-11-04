@@ -18,12 +18,14 @@ class Deck:
       self.cards[len(self.cards) - 1].reveal()
 
   def printTop(self, end = "\n"):
-    if len(self.cards) > 0:
-      self.cards[len(self.cards) - 1].print(end=end)
-    else:
-      print("   ", end=end)
+    self.printCard(len(self.cards) - 1, end=end)
 
   def printCard(self, index, end = "\n"):
+    if not self.hasCards():
+      try:
+        print(Back.LIGHTBLACK_EX + "   " + Style.RESET_ALL, end=end)
+      except:
+        print("███", end=end)
     if len(self.cards) > index and index >= 0:
       self.cards[index].print(end=end)
     else:

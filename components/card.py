@@ -23,14 +23,13 @@ class Card:
         s = self.suit.value + "{:>2}".format(v)
         print(f + b + s + Style.RESET_ALL, end=end)
       else:
-        print(Back.GREEN + "   " + Style.RESET_ALL, end=end)
+        print(Back.GREEN + Fore.WHITE + " ★ " + Style.RESET_ALL, end=end)
     except:
       if self.revealed:
         v = "J" if self.value == 11 else "Q" if self.value == 12 else "K" if self.value == 13 else "A" if self.value == 14 else self.value
         print(self.suit.value + "{:>2}".format(v), end=end)
       else:
-        print("███", end=end)
-        
+        print("[★]", end=end)
     
   def reveal(self):
     self.revealed = True
