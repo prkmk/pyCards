@@ -75,3 +75,6 @@ class Hand:
     for card in self.cards:
       card.reveal()
     sortCards(self.cards)
+
+  def hasCards(self):
+    return len(self.cards) > 0

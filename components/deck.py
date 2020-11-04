@@ -7,18 +7,19 @@ class Deck:
     if not empty:
       for suit in Suits:
         for value in range(2, 15):
-          self.cards.append(Card(suit, value))
+          self.cards.append(Card(suit, value, False))
 
   def print(self):
     for card in self.cards:
       card.print()
 
-  def printTop(self, revealed = False, end = "\n"):
+  def revealTop(self):
     if len(self.cards) > 0:
-      if not revealed:
-        Card(revealed=False).print(end=end)
-      else:
-        self.cards[len(self.cards) - 1].print(end=end)
+      self.cards[len(self.cards) - 1].reveal()
+
+  def printTop(self, end = "\n"):
+    if len(self.cards) > 0:
+      self.cards[len(self.cards) - 1].print(end=end)
     else:
       print("   ", end=end)
 
@@ -47,3 +48,14 @@ class Deck:
     for card in cards:
       self.cards.append(card)
     return len(self.cards)
+
+  def hasCards(self):
+    return len(self.cards) > 0
+
+  def hideAll(self):
+    for card in self.cards:
+      card.hide()
+  
+  def revealAll(self):
+    for card in self.cards:
+      card.reveal()
