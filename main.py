@@ -1,6 +1,8 @@
 from games.example import *
+from games.solitaire import *
 
 def main():
-  example()
+  # example()
+  solitaire()
 
 main()

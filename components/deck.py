@@ -23,6 +23,12 @@ class Deck:
     else:
       print("   ", end=end)
 
+  def printCard(self, index, end = "\n"):
+    if len(self.cards) > index and index >= 0:
+      self.cards[index].print(end=end)
+    else:
+      print("   ", end=end)
+
   def shuffle(self):
     random.shuffle(self.cards)
   
