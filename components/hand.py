@@ -1,4 +1,4 @@
-from card import *
+from components.card import *
 import random
 
 def suit(card):
