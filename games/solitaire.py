@@ -93,17 +93,27 @@ def solitaire():
       if fr <= tableDeckCount:
         card = Card()
         if fr == 0:
-          card = trash.takeCard()
+          card = trash.getTopCard()
         else:
-          card = tableDecks[fr - 1].takeCard()
-          tableDecks[fr - 1].revealTop()
+          card = tableDecks[fr - 1].getTopCard()
+
+        deckNum = 0
         if card.suit == Suits.HEART:
-          buildDecks[0].addCard(card)
+          deckNum = 0
         if card.suit == Suits.SPADE:
-          buildDecks[1].addCard(card)
+          deckNum = 1
         if card.suit == Suits.DIAMOND:
-          buildDecks[2].addCard(card)
+          deckNum = 2
         if card.suit == Suits.CLUB:
-          buildDecks[3].addCard(card)
+          deckNum = 3
+        top = buildDecks[deckNum].getTopCard()
+        print(card.value)
+        if (top == None and card.value == 1) or (top != None and top.value == card.value - 1):
+          buildDecks[deckNum].addCard(card)
+          if fr == 0:
+            trash.takeCard()
+          else:
+            tableDecks[fr - 1].takeCard()
+            tableDecks[fr - 1].revealTop()
     
     print()

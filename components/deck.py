@@ -70,3 +70,9 @@ class Deck:
   def revealAll(self):
     for card in self.cards:
       card.reveal()
+
+  def getTopCard(self):
+    if len(self.cards) > 0:
+      return self.cards[len(self.cards) - 1]
+    else:
+      return None

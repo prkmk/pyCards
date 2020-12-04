@@ -9,7 +9,7 @@ class Suits(enum.Enum):
 
 class Card:
   def __init__(self, suit = Suits.HEART, value = 1, revealed = True):
-    self.value = 14 if value == 1 else value
+    self.value = 1 if value == 14 else value
     self.suit = suit
     self.color = "red" if suit == Suits.HEART or suit == Suits.DIAMOND else "black"
     self.revealed = revealed
@@ -19,7 +19,7 @@ class Card:
       if self.revealed:
         f = Fore.RED if self.color == "red" else Fore.BLACK
         b = Back.WHITE
-        v = "J" if self.value == 11 else "Q" if self.value == 12 else "K" if self.value == 13 else "A" if self.value == 14 else self.value
+        v = "J" if self.value == 11 else "Q" if self.value == 12 else "K" if self.value == 13 else "A" if self.value == 1 else self.value
         s = self.suit.value + "{:>2}".format(v)
         print(f + b + s + Style.RESET_ALL, end=end)
       else:
