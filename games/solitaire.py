@@ -88,5 +88,22 @@ def solitaire():
         else:
           tableDecks[to - 1].addCard(tableDecks[fr - 1].takeCard())
           tableDecks[fr - 1].revealTop()
+    elif len(i) == 1:
+      fr = int(i[0])
+      if fr <= tableDeckCount:
+        card = Card()
+        if fr == 0:
+          card = trash.takeCard()
+        else:
+          card = tableDecks[fr - 1].takeCard()
+          tableDecks[fr - 1].revealTop()
+        if card.suit == Suits.HEART:
+          buildDecks[0].addCard(card)
+        if card.suit == Suits.SPADE:
+          buildDecks[1].addCard(card)
+        if card.suit == Suits.DIAMOND:
+          buildDecks[2].addCard(card)
+        if card.suit == Suits.CLUB:
+          buildDecks[3].addCard(card)
     
     print()
